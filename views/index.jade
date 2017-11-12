@@ -1,0 +1,152 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		title Facebook Share Plugin
+		style.
+			*{
+				box-sizing: border-box;
+			}
+			body{
+				font-family: 'Segoe UI', sans-serif;
+				margin: 0;
+				padding: 0;
+				color: #3233232;
+			}
+			.container{
+				width: 60%;
+				margin: 6% auto;
+			}
+			h1{
+				font-weight: 600;
+			}
+			textarea{
+				resize: none;
+				width: 100%;
+				height: 350px;
+				border: 1px solid #ccc;
+				padding: 10px;
+			}
+			label{
+				margin-bottom: 20px;
+				display: block;
+			}
+			.submit {
+				width: 100%;
+				display: block;
+				color: white;
+				border: 0 none;
+				background: #039AFB;
+				height: 60px;
+				margin-top: 40px;
+				font-size: 1.4em;
+				font-weight: 300;
+			}
+			.btn {
+				width: 100%;
+				display: block;
+				height: 50px;
+				color: #fff;
+				border: 0 none;
+				font-size: 1.3em;
+				cursor: pointer;
+				margin-bottom: 20px;
+			}
+			.submit.disabled{
+				background-color: #ddd;
+			}
+			.login.btn{
+				background-color: #35a7ff;
+			}
+			.active.active.btn{
+				background-color: #6cd246;
+				cursor: initial;
+			}
+			.llut.btn{
+				background-color: #38618c;
+			}
+			.llpt.btn{
+				background-color: #F34605;
+			}
+			#choosepage{
+				padding: 10px;
+				display: none;
+			}
+			h2{
+				margin: 0;
+			}
+			.pages{
+				margin-top: 20px;
+			}
+			.pages .page-choice{
+				cursor: pointer;
+				width: 200px;
+				height: 150px;
+				border: 1px solid #ccc;
+				border-radius: 20px;
+				text-align: center;
+				float: left;
+				margin-right: 20px;
+				margin-bottom: 20px;
+				padding-top: 60px;
+				color: #999;
+			}
+			.pages .page-choice:hover{
+				border-width: 2px;
+				border-color: #35a7ff;
+				color: #35a7ff;
+				font-weight: 600;
+			}
+			.cf:before,
+			.cf:after {
+			    content: " "; /* 1 */
+			    display: table; /* 2 */
+			}
+
+			.cf:after {
+			    clear: both;
+			}
+
+			/**
+			 * For IE 6/7 only
+			 * Include this rule to trigger hasLayout and contain floats.
+			 */
+			.cf {
+			    *zoom: 1;
+			}
+	body
+		script.
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId            : '293261131165707',
+					autoLogAppEvents : true,
+					xfbml            : true,
+					version          : 'v2.11'
+				});
+				readyFB();
+			};
+			(function(d, s, id){
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) {return;}
+				js = d.createElement(s); js.id = id;
+				js.src = "https://connect.facebook.net/en_US/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+
+		.container
+
+			button.login.btn#loginbtn Login to FB
+			button.llut.btn#llutbtn Get Long-Lived User Token 
+			button.llpt.btn#llptbtn Get Long-Lived Page Token 
+			#choosepage
+				h2 Choose a page
+				p(style="margin: 0; color: #777; font-size: 12px;") We found several pages that you manage. Choose the one that you want to post automatically to.
+				.pages.cf
+					//- .page-choice(rel="1") Make someone smile
+			h1 Facebook Share 2 Page
+			form.post-content#postcontent(action='#')
+				label(for='msg') Post content:
+				textarea#msg(name='msg', placeholder='Post content')
+				input#submitbtn.submit.disabled(type='submit', value='Send', disabled="true")
+		script(src='ajax.js')
+		script(src='test.js')
