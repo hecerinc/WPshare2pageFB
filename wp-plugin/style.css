@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+.status-tag{
+	float: left;
+	margin-right: 20px;
+}
+.npfbform{
+	width: 70%;
+}
+.form-fields{
+	width: 100%;
+	padding-top: 1%;
+}
+.form-fields tr td:first-child {
+	width: 15%;
+}
+.form-fields input[type="text"]{
+	width: 100%;
+}
+.wrap .content{
+	padding-top: 2%;
+}
+#authorizebtn{
+	position: relative;
+	top: 10px;
+}
+#choosepagerow{
+	display: none;
+}
